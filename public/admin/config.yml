@@ -1,0 +1,166 @@
+# Decap CMS 설정
+# 민쌤이 minjungmi.kr/admin/ 에서 보는 편집 화면 구조
+
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: '{{collection}} 추가: {{slug}}'
+    update: '{{collection}} 수정: {{slug}}'
+    delete: '{{collection}} 삭제: {{slug}}'
+    uploadMedia: '이미지 업로드: {{path}}'
+    deleteMedia: '이미지 삭제: {{path}}'
+
+# 로그인 안 한 상태 자동 진입 차단
+publish_mode: simple
+locale: 'ko'
+
+# 이미지 업로드 경로
+media_folder: 'public/images'
+public_folder: '/images'
+
+# 사이트 URL (admin 상단에 '사이트 보기' 링크용)
+site_url: 'https://minjungmi.kr'
+display_url: 'https://minjungmi.kr'
+
+# 로고
+logo_url: 'https://minjungmi.kr/images/min3.jpg'
+
+# ============ 컬렉션 ============
+collections:
+
+  # ─── 위클리 레터 ───
+  - name: 'weekly'
+    label: '위클리 레터'
+    label_singular: '위클리'
+    description: '매주 금요일 아침에 보내는 한 통의 편지'
+    folder: 'src/content/weekly'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-vol-{{vol}}'
+    sortable_fields: ['date', 'vol']
+    view_filters:
+      - { label: '최신순', field: 'date', pattern: '2026' }
+    fields:
+      - { label: '발행일', name: 'date', widget: 'datetime', default: '', format: 'YYYY-MM-DD' }
+      - { label: 'VOL 번호', name: 'vol', widget: 'number', hint: '예: 13, 14, 15... (위클리는 자동 누적)' }
+      - { label: '제목', name: 'title', widget: 'string', hint: '예: "보험은요, 사실 당신이 사라진 뒤를 위한 편지입니다."' }
+      - { label: '한 줄 발췌', name: 'excerpt', widget: 'text', required: false, hint: '아카이브 리스트에 표시되는 짧은 발췌 (선택)' }
+      - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '350~500자 권장' }
+      - label: '책 인용 (선택)'
+        name: 'book_quote'
+        widget: 'object'
+        required: false
+        collapsed: true
+        fields:
+          - { label: '출처', name: 'source', widget: 'string', required: false, hint: '예: 『보험 테라피스트 민정미 씨 이야기』 — 17화' }
+          - { label: '인용문', name: 'text', widget: 'text', required: false }
+      - { label: '읽기 시간', name: 'reading_time', widget: 'string', default: '4 MIN READ', required: false }
+
+  # ─── 월간호 (4꼭지) ───
+  - name: 'monthly'
+    label: '월간호'
+    label_singular: '월간호'
+    description: '매달 마지막 금요일 — 4개 꼭지의 작은 잡지'
+    folder: 'src/content/monthly'
+    create: true
+    slug: '{{year}}-{{month}}-issue-{{issue_no}}'
+    sortable_fields: ['issue_no', 'date']
+    fields:
+      - { label: '이슈 번호', name: 'issue_no', widget: 'number', hint: '예: 1, 2, 3...' }
+      - { label: '발행일', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' }
+      - { label: '발행월 라벨', name: 'issue_month', widget: 'string', hint: '예: "MAY 2026 · 가정의 달"' }
+      - { label: '표지 제목', name: 'cover_title', widget: 'string', hint: '한 호의 메인 카피' }
+      - { label: '표지 카피 (deck)', name: 'cover_deck', widget: 'text', hint: '표지 카드의 짧은 설명' }
+
+      - label: '꼭지 N°01 · 이번 달의 편지'
+        name: 'piece_letter'
+        widget: 'object'
+        collapsed: false
+        fields:
+          - { label: '제목', name: 'title', widget: 'string' }
+          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '800~1,200자' }
+          - label: '책 인용 박스'
+            name: 'book_quote'
+            widget: 'object'
+            required: false
+            fields:
+              - { label: '출처', name: 'source', widget: 'string', required: false }
+              - { label: '인용문', name: 'text', widget: 'text', required: false }
+          - { label: '서명', name: 'signature', widget: 'string', default: '민정미, from Chungmuro' }
+
+      - label: '꼭지 N°02 · 한 사람, 한 설계'
+        name: 'piece_case'
+        widget: 'object'
+        collapsed: false
+        fields:
+          - { label: '제목', name: 'title', widget: 'string' }
+          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '600~800자' }
+          - { label: '케이스 태그', name: 'case_tag', widget: 'string', hint: '예: "CASE · 익명 처리 · 30대 워킹맘 · 자녀 2"' }
+
+      - label: '꼭지 N°03 · 이 달의 변화'
+        name: 'piece_news'
+        widget: 'object'
+        collapsed: false
+        fields:
+          - { label: '제목', name: 'title', widget: 'string' }
+          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '300자 내외' }
+          - { label: '민쌤 한 줄', name: 'comment', widget: 'text' }
+
+      - label: '꼭지 N°04 · 테라피스트의 한 마디'
+        name: 'piece_voice'
+        widget: 'object'
+        collapsed: false
+        fields:
+          - label: '이번 호 주인공'
+            name: 'member'
+            widget: 'select'
+            options:
+              - { label: '민정미', value: 'minjungmi' }
+              - { label: '육태겸', value: 'yuktaegyeom' }
+              - { label: '조수연', value: 'josuyeon' }
+              - { label: '최은영', value: 'choieunyoung' }
+              - { label: '최종남', value: 'choijongnam' }
+              - { label: '현진현', value: 'hyunjinhyun' }
+              - { label: '조수현', value: 'josuhyun' }
+              - { label: '안경수', value: 'anggyeongsu' }
+          - { label: '한 마디 (한 문장)', name: 'quote', widget: 'text', hint: '예: "20년이 아니라, 20번의 봄을 함께 본 것이라고 생각합니다."' }
+
+      - { label: '다음 호 예고', name: 'next_issue_label', widget: 'string', default: 'NEXT ISSUE', required: false }
+
+  # ─── 테라피스트 (8명) ───
+  - name: 'therapists'
+    label: '테라피스트'
+    label_singular: '테라피스트'
+    description: '8명의 보험 테라피스트 프로필'
+    folder: 'src/content/therapists'
+    create: false
+    slug: '{{member_no}}-{{slug}}'
+    sortable_fields: ['member_no']
+    fields:
+      - { label: '멤버 번호', name: 'member_no', widget: 'number', hint: '1~8' }
+      - { label: '이름', name: 'name', widget: 'string' }
+      - { label: '이름 영문', name: 'name_en', widget: 'string', required: false }
+      - { label: '직책 / 캡션', name: 'caption', widget: 'string', required: false, hint: '예: "[사랑지사 지사장]"' }
+      - { label: '경력', name: 'years', widget: 'string', default: '1 YEAR', hint: '예: "20 YEARS" 또는 "1 YEAR"' }
+      - { label: '부가 라벨', name: 'extra_role', widget: 'string', required: false, hint: '예: "소설가 · 카피라이터"' }
+      - { label: '프로필 사진', name: 'photo', widget: 'image', required: false, choose_url: false }
+      - { label: '외부 링크 URL', name: 'external_link', widget: 'string', required: false, hint: '클릭 시 이동할 URL (MDRT, 교보문고 등)' }
+      - { label: '외부 링크 라벨', name: 'external_link_label', widget: 'string', required: false, default: 'PROFILE ↗' }
+      - { label: 'LEADER 표시', name: 'is_leader', widget: 'boolean', default: false }
+
+  # ─── PRESS · 보도자료 ───
+  - name: 'press'
+    label: 'PRESS · 보도자료'
+    label_singular: 'PRESS 카드'
+    description: '미디어 노출, 인터뷰, 도서 등'
+    folder: 'src/content/press'
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['date']
+    fields:
+      - { label: '매체명', name: 'outlet', widget: 'string', hint: '예: Businesskorea, brunch · 현진현 작가, 교보문고' }
+      - { label: '발행일', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' }
+      - { label: '제목', name: 'title', widget: 'string' }
+      - { label: '발췌', name: 'excerpt', widget: 'text', hint: '카드에 표시될 짧은 요약 (2~3줄)' }
+      - { label: '바이라인', name: 'byline', widget: 'string', required: false, hint: '예: "BY Businesskorea · 인물·도서"' }
+      - { label: '원문 URL', name: 'url', widget: 'string' }

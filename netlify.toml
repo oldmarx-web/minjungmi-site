@@ -1,0 +1,23 @@
+# Netlify build settings for Astro
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Decap CMS는 public/admin/ 에서 서비스됨
+# Netlify Identity로 인증, Git Gateway로 GitHub 커밋 위임
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 캐싱 — 이미지/폰트 등 정적 자산은 1년 캐시
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
