@@ -3,5 +3,6 @@
   "name": "조수연",
   "name_en": "Jo Su Yeon",
   "years": "18 YEARS",
-  "is_leader": false
+  "is_leader": false,
+  "photo": "/images/yeun.jpg"
 }
