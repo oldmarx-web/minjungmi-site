@@ -1,5 +1,35 @@
 import { defineCollection, z } from 'astro:content';
 
+const site = defineCollection({
+  type: 'data',
+  schema: z.object({
+    hero_image: z.string(),
+    hero_image_caption: z.string(),
+    hero_image_credit: z.string(),
+    hero_eyebrow: z.string(),
+    hero_title_line1: z.string(),
+    hero_title_line2: z.string(),
+    hero_title_line3: z.string(),
+    hero_subtitle: z.string(),
+    since_year: z.string(),
+    about_portrait: z.string(),
+    about_caption: z.string(),
+    contact_phone_display: z.string(),
+    contact_phone_dial: z.string(),
+    contact_email: z.string(),
+    contact_address: z.string(),
+    contact_branch: z.string(),
+    social_youtube: z.string(),
+    social_instagram: z.string(),
+    social_kakao: z.string(),
+    main_video_id: z.string(),
+    main_video_title: z.string(),
+    main_video_date: z.string(),
+    main_video_length: z.string(),
+    main_video_description: z.string(),
+  }),
+});
+
 const weekly = defineCollection({
   type: 'content',
   schema: z.object({
@@ -81,4 +111,4 @@ const press = defineCollection({
   }),
 });
 
-export const collections = { weekly, monthly, therapists, press };
+export const collections = { site, weekly, monthly, therapists, press };
