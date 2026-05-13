@@ -235,7 +235,7 @@ const pad = (n) => String(n).padStart(2, '0');
             rel="noopener"
             aria-label={`${t.data.name} 외부 링크`}
           >
-            <div class="mnum">{mnumText}</div>
+            <div class="mnum">{"mnumText"}</div>
             {t.data.photo ? (
               <div class="circle has-photo">
                 <img src={t.data.photo} alt={t.data.name} loading="lazy" decoding="async" />
