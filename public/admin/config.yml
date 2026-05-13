@@ -11,54 +11,131 @@ backend:
     uploadMedia: '이미지 업로드: {{path}}'
     deleteMedia: '이미지 삭제: {{path}}'
 
-# 로그인 안 한 상태 자동 진입 차단
 publish_mode: simple
 locale: 'ko'
 
-# 이미지 업로드 경로
 media_folder: 'public/images'
 public_folder: '/images'
 
-# 사이트 URL (admin 상단에 '사이트 보기' 링크용)
 site_url: 'https://minjungmi.kr'
 display_url: 'https://minjungmi.kr'
-
-# 로고
 logo_url: 'https://minjungmi.kr/images/min3.jpg'
 
-# ============ 컬렉션 ============
 collections:
+
+  # ─── 사이트 전역 설정 (히어로, About, 연락처 등) ───
+  - name: 'site'
+    label: '⚙️ 사이트 전역 설정'
+    description: '히어로 사진, About, 연락처 등 페이지 전반의 큰 항목을 한 번에 관리'
+    files:
+      - file: 'src/content/site/general.json'
+        label: '전역 설정'
+        name: 'general'
+        fields:
+          - label: '히어로 (대나무) 영역'
+            name: '_hero_group'
+            widget: 'object'
+            collapsed: false
+            fields:
+              - { label: '히어로 사진 (대나무)', name: 'hero_image', widget: 'image' }
+              - { label: '사진 캡션 (좌)', name: 'hero_image_caption', widget: 'string' }
+              - { label: '사진 캡션 (우 · 촬영 정보)', name: 'hero_image_credit', widget: 'string' }
+              - { label: '히어로 위 라벨', name: 'hero_eyebrow', widget: 'string', hint: '예: "ISSUE Nº 012 — A WEEKLY LETTER"' }
+              - { label: '히어로 큰 제목 1줄', name: 'hero_title_line1', widget: 'string' }
+              - { label: '히어로 큰 제목 2줄', name: 'hero_title_line2', widget: 'string' }
+              - { label: '히어로 큰 제목 3줄', name: 'hero_title_line3', widget: 'string' }
+              - { label: '히어로 서브카피', name: 'hero_subtitle', widget: 'text' }
+              - { label: 'Since (연도)', name: 'since_year', widget: 'string', hint: '예: "2006"' }
+
+          - label: 'About 섹션'
+            name: '_about_group'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'About 인물 사진', name: 'about_portrait', widget: 'image' }
+              - { label: 'About 사진 캡션', name: 'about_caption', widget: 'string' }
+
+          - label: '연락처 (직통)'
+            name: '_contact_group'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: '전화 (표시용)', name: 'contact_phone_display', widget: 'string', hint: '예: "010-5023-9420"' }
+              - { label: '전화 (다이얼링용)', name: 'contact_phone_dial', widget: 'string', hint: '예: "+821050239420"' }
+              - { label: '이메일', name: 'contact_email', widget: 'string' }
+              - { label: '주소', name: 'contact_address', widget: 'string' }
+              - { label: '소속', name: 'contact_branch', widget: 'string' }
+
+          - label: '소셜 채널 링크'
+            name: '_social_group'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'YouTube 채널 URL', name: 'social_youtube', widget: 'string' }
+              - { label: 'Instagram URL', name: 'social_instagram', widget: 'string' }
+              - { label: '카카오 채널 URL', name: 'social_kakao', widget: 'string' }
+
+          - label: '메인 영상 (왜 이 상품이 섹션)'
+            name: '_main_video_group'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: '메인 영상 YouTube ID', name: 'main_video_id', widget: 'string', hint: '예: "bC6gOX2ztBk" (URL 뒤 v= 다음 부분)' }
+              - { label: '영상 제목', name: 'main_video_title', widget: 'string' }
+              - { label: '영상 업로드 날짜', name: 'main_video_date', widget: 'string', hint: '예: "2026·02·18"' }
+              - { label: '영상 길이', name: 'main_video_length', widget: 'string', hint: '예: "1:56"' }
+              - { label: '영상 설명 (1단락)', name: 'main_video_description', widget: 'text' }
+
+  # ─── 테라피스트 (8명) ───
+  - name: 'therapists'
+    label: '👥 테라피스트 (8명)'
+    label_singular: '테라피스트'
+    description: '8명의 보험 테라피스트 프로필 — 사진과 캡션 변경 가능'
+    folder: 'src/content/therapists'
+    create: false
+    slug: '{{member_no}}-{{slug}}'
+    sortable_fields: ['member_no']
+    identifier_field: 'name'
+    fields:
+      - { label: '멤버 번호 (1~8)', name: 'member_no', widget: 'number', min: 1, max: 8 }
+      - { label: '이름', name: 'name', widget: 'string' }
+      - { label: '영문 이름', name: 'name_en', widget: 'string', required: false }
+      - { label: '프로필 사진', name: 'photo', widget: 'image', required: false, hint: '사진 업로드. 비워두면 이니셜 동그라미가 표시됨' }
+      - { label: '직책 / 캡션', name: 'caption', widget: 'string', required: false, hint: '예: "[사랑지사 지사장]" — 사진 아래 표시' }
+      - { label: '경력', name: 'years', widget: 'string', default: '1 YEAR', hint: '예: "20 YEARS" 또는 "1 YEAR"' }
+      - { label: '부가 라벨', name: 'extra_role', widget: 'string', required: false, hint: '예: "소설가 · 카피라이터"' }
+      - { label: '외부 링크 URL', name: 'external_link', widget: 'string', required: false, hint: 'MDRT, 교보문고 등' }
+      - { label: '외부 링크 라벨', name: 'external_link_label', widget: 'string', required: false, default: 'PROFILE ↗' }
+      - { label: 'LEADER 표시 (★)', name: 'is_leader', widget: 'boolean', default: false }
 
   # ─── 위클리 레터 ───
   - name: 'weekly'
-    label: '위클리 레터'
+    label: '📬 위클리 레터'
     label_singular: '위클리'
-    description: '매주 금요일 아침에 보내는 한 통의 편지'
+    description: '매주 금요일 아침의 한 통의 편지 — 새 글을 추가하면 최신글로 표시됨'
     folder: 'src/content/weekly'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-vol-{{vol}}'
     sortable_fields: ['date', 'vol']
-    view_filters:
-      - { label: '최신순', field: 'date', pattern: '2026' }
     fields:
-      - { label: '발행일', name: 'date', widget: 'datetime', default: '', format: 'YYYY-MM-DD' }
-      - { label: 'VOL 번호', name: 'vol', widget: 'number', hint: '예: 13, 14, 15... (위클리는 자동 누적)' }
-      - { label: '제목', name: 'title', widget: 'string', hint: '예: "보험은요, 사실 당신이 사라진 뒤를 위한 편지입니다."' }
-      - { label: '한 줄 발췌', name: 'excerpt', widget: 'text', required: false, hint: '아카이브 리스트에 표시되는 짧은 발췌 (선택)' }
+      - { label: '발행일', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' }
+      - { label: 'VOL 번호', name: 'vol', widget: 'number' }
+      - { label: '제목', name: 'title', widget: 'string' }
+      - { label: '한 줄 발췌', name: 'excerpt', widget: 'text', required: false }
       - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '350~500자 권장' }
-      - label: '책 인용 (선택)'
+      - label: '책 인용 박스 (선택)'
         name: 'book_quote'
         widget: 'object'
         required: false
         collapsed: true
         fields:
-          - { label: '출처', name: 'source', widget: 'string', required: false, hint: '예: 『보험 테라피스트 민정미 씨 이야기』 — 17화' }
+          - { label: '출처', name: 'source', widget: 'string', required: false }
           - { label: '인용문', name: 'text', widget: 'text', required: false }
       - { label: '읽기 시간', name: 'reading_time', widget: 'string', default: '4 MIN READ', required: false }
 
-  # ─── 월간호 (4꼭지) ───
+  # ─── 월간호 ───
   - name: 'monthly'
-    label: '월간호'
+    label: '📰 월간호'
     label_singular: '월간호'
     description: '매달 마지막 금요일 — 4개 꼭지의 작은 잡지'
     folder: 'src/content/monthly'
@@ -66,19 +143,18 @@ collections:
     slug: '{{year}}-{{month}}-issue-{{issue_no}}'
     sortable_fields: ['issue_no', 'date']
     fields:
-      - { label: '이슈 번호', name: 'issue_no', widget: 'number', hint: '예: 1, 2, 3...' }
+      - { label: '이슈 번호', name: 'issue_no', widget: 'number' }
       - { label: '발행일', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' }
-      - { label: '발행월 라벨', name: 'issue_month', widget: 'string', hint: '예: "MAY 2026 · 가정의 달"' }
-      - { label: '표지 제목', name: 'cover_title', widget: 'string', hint: '한 호의 메인 카피' }
-      - { label: '표지 카피 (deck)', name: 'cover_deck', widget: 'text', hint: '표지 카드의 짧은 설명' }
-
+      - { label: '발행월 라벨', name: 'issue_month', widget: 'string' }
+      - { label: '표지 제목', name: 'cover_title', widget: 'string' }
+      - { label: '표지 카피', name: 'cover_deck', widget: 'text' }
       - label: '꼭지 N°01 · 이번 달의 편지'
         name: 'piece_letter'
         widget: 'object'
         collapsed: false
         fields:
           - { label: '제목', name: 'title', widget: 'string' }
-          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '800~1,200자' }
+          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown' }
           - label: '책 인용 박스'
             name: 'book_quote'
             widget: 'object'
@@ -87,25 +163,22 @@ collections:
               - { label: '출처', name: 'source', widget: 'string', required: false }
               - { label: '인용문', name: 'text', widget: 'text', required: false }
           - { label: '서명', name: 'signature', widget: 'string', default: '민정미, from Chungmuro' }
-
       - label: '꼭지 N°02 · 한 사람, 한 설계'
         name: 'piece_case'
         widget: 'object'
         collapsed: false
         fields:
           - { label: '제목', name: 'title', widget: 'string' }
-          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '600~800자' }
-          - { label: '케이스 태그', name: 'case_tag', widget: 'string', hint: '예: "CASE · 익명 처리 · 30대 워킹맘 · 자녀 2"' }
-
+          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown' }
+          - { label: '케이스 태그', name: 'case_tag', widget: 'string', required: false }
       - label: '꼭지 N°03 · 이 달의 변화'
         name: 'piece_news'
         widget: 'object'
         collapsed: false
         fields:
           - { label: '제목', name: 'title', widget: 'string' }
-          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown', hint: '300자 내외' }
+          - { label: '본문 (마크다운)', name: 'body', widget: 'markdown' }
           - { label: '민쌤 한 줄', name: 'comment', widget: 'text' }
-
       - label: '꼭지 N°04 · 테라피스트의 한 마디'
         name: 'piece_voice'
         widget: 'object'
@@ -123,44 +196,22 @@ collections:
               - { label: '현진현', value: 'hyunjinhyun' }
               - { label: '조수현', value: 'josuhyun' }
               - { label: '안경수', value: 'anggyeongsu' }
-          - { label: '한 마디 (한 문장)', name: 'quote', widget: 'text', hint: '예: "20년이 아니라, 20번의 봄을 함께 본 것이라고 생각합니다."' }
-
+          - { label: '한 마디 (한 문장)', name: 'quote', widget: 'text' }
       - { label: '다음 호 예고', name: 'next_issue_label', widget: 'string', default: 'NEXT ISSUE', required: false }
-
-  # ─── 테라피스트 (8명) ───
-  - name: 'therapists'
-    label: '테라피스트'
-    label_singular: '테라피스트'
-    description: '8명의 보험 테라피스트 프로필'
-    folder: 'src/content/therapists'
-    create: false
-    slug: '{{member_no}}-{{slug}}'
-    sortable_fields: ['member_no']
-    fields:
-      - { label: '멤버 번호', name: 'member_no', widget: 'number', hint: '1~8' }
-      - { label: '이름', name: 'name', widget: 'string' }
-      - { label: '이름 영문', name: 'name_en', widget: 'string', required: false }
-      - { label: '직책 / 캡션', name: 'caption', widget: 'string', required: false, hint: '예: "[사랑지사 지사장]"' }
-      - { label: '경력', name: 'years', widget: 'string', default: '1 YEAR', hint: '예: "20 YEARS" 또는 "1 YEAR"' }
-      - { label: '부가 라벨', name: 'extra_role', widget: 'string', required: false, hint: '예: "소설가 · 카피라이터"' }
-      - { label: '프로필 사진', name: 'photo', widget: 'image', required: false, choose_url: false }
-      - { label: '외부 링크 URL', name: 'external_link', widget: 'string', required: false, hint: '클릭 시 이동할 URL (MDRT, 교보문고 등)' }
-      - { label: '외부 링크 라벨', name: 'external_link_label', widget: 'string', required: false, default: 'PROFILE ↗' }
-      - { label: 'LEADER 표시', name: 'is_leader', widget: 'boolean', default: false }
 
   # ─── PRESS · 보도자료 ───
   - name: 'press'
-    label: 'PRESS · 보도자료'
+    label: '📎 PRESS · 보도자료'
     label_singular: 'PRESS 카드'
-    description: '미디어 노출, 인터뷰, 도서 등'
+    description: '미디어 노출, 인터뷰, 도서 카드 추가/수정'
     folder: 'src/content/press'
     create: true
     slug: '{{slug}}'
     sortable_fields: ['date']
     fields:
-      - { label: '매체명', name: 'outlet', widget: 'string', hint: '예: Businesskorea, brunch · 현진현 작가, 교보문고' }
+      - { label: '매체명', name: 'outlet', widget: 'string' }
       - { label: '발행일', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' }
       - { label: '제목', name: 'title', widget: 'string' }
-      - { label: '발췌', name: 'excerpt', widget: 'text', hint: '카드에 표시될 짧은 요약 (2~3줄)' }
-      - { label: '바이라인', name: 'byline', widget: 'string', required: false, hint: '예: "BY Businesskorea · 인물·도서"' }
+      - { label: '발췌', name: 'excerpt', widget: 'text' }
+      - { label: '바이라인', name: 'byline', widget: 'string', required: false }
       - { label: '원문 URL', name: 'url', widget: 'string' }
