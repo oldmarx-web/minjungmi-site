@@ -1,0 +1,6 @@
+---
+member_no: 7
+name: "조수현"
+photo: "/images/cho.jpg"
+years: "12 YEARS"
+---
