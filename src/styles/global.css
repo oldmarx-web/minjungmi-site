@@ -2421,3 +2421,40 @@
 
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============ LOGO ============ */
+.brand-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  vertical-align: middle;
+  box-shadow: 0 2px 6px -1px rgba(146, 72, 32, 0.25);
+}
+
+.footer-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.footer-logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(232, 219, 184, 0.08);
+  margin-bottom: 18px;
+}
+.footer-mark-cap {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232, 219, 184, 0.7);
+}
+@media (max-width: 600px) {
+  .footer-logo { width: 110px; height: 110px; }
+  .brand-logo { width: 22px; height: 22px; margin-right: 8px; }
+}
