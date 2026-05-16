@@ -961,11 +961,46 @@ const pastIssues    = monthly.slice(1);
   </div>
   <div class="footer-visitors">
     <div class="footer-visitors-label">VISITORS · 오늘 / 전체</div>
-    <a href="https://hits.seeyoufarm.com" target="_blank" rel="noopener" aria-label="방문자 통계">
-      <img class="footer-visitors-badge" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fminjungmi.kr&count_bg=%23E9B44C&title_bg=%233D3732&icon=&icon_color=%23FDF7E8&title=visitors&edge_flat=false" alt="visitors today / total" />
-    </a>
-    <div class="footer-visitors-note">매 방문 시 카운트가 1 증가합니다 · 좌측 오늘 · 우측 누적</div>
+    <div class="footer-visitors-numbers">
+      <span class="vc-today" id="vc-today">—</span>
+      <span class="vc-sep">/</span>
+      <span class="vc-total" id="vc-total">—</span>
+    </div>
   </div>
+
+  <script>
+    (async function () {
+      try {
+        const today = new Date().toISOString().slice(0,10).replace(/-/g, '');
+        const NS = 'minjungmi';
+        const TOTAL = NS + '-total';
+        const DAILY = NS + '-d' + today;
+        const fmt = (n) => Number(n || 0).toLocaleString();
+
+        const tryFetch = async (url) => {
+          try {
+            const r = await fetch(url, { cache: 'no-store' });
+            if (!r.ok) return null;
+            return await r.json();
+          } catch (e) { return null; }
+        };
+
+        const [tot, dai] = await Promise.all([
+          tryFetch('https://api.counterapi.dev/v1/' + NS + '/' + TOTAL + '/up'),
+          tryFetch('https://api.counterapi.dev/v1/' + NS + '/' + DAILY + '/up'),
+        ]);
+
+        if (tot && tot.value !== undefined) {
+          document.getElementById('vc-total').textContent = fmt(tot.value);
+        }
+        if (dai && dai.value !== undefined) {
+          document.getElementById('vc-today').textContent = fmt(dai.value);
+        }
+      } catch (e) {
+        // Fail silently — leave the em-dash placeholders
+      }
+    })();
+  </script>
 
   <div class="footer-bottom">
     <div>© 2026 MIN JUNG MI · INSURANCE THERAPISTS</div>
