@@ -2474,21 +2474,24 @@
   color: rgba(232, 219, 184, 0.55);
   margin-bottom: 12px;
 }
-.footer-visitors a {
-  display: inline-block;
-  line-height: 0;
+.footer-visitors-numbers {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #FDF7E8;
 }
-.footer-visitors-badge {
-  height: 28px;
-  width: auto;
-  filter: saturate(1.05);
-  box-shadow: 0 4px 10px -3px rgba(0,0,0,0.35);
-  border-radius: 4px;
+.footer-visitors-numbers .vc-today {
+  color: var(--sunset);
 }
-.footer-visitors-note {
-  margin-top: 10px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 11px;
-  color: rgba(232, 219, 184, 0.42);
-  letter-spacing: 0.02em;
+.footer-visitors-numbers .vc-sep {
+  color: rgba(232, 219, 184, 0.35);
+  font-weight: 400;
+  font-size: 16px;
+}
+.footer-visitors-numbers .vc-total {
+  color: rgba(232, 219, 184, 0.92);
 }
