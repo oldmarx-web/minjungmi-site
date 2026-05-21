@@ -283,6 +283,16 @@
     color: var(--sunset-dp);
   }
   .hero h1 .thin { font-weight: 300; color: var(--ink-soft); }
+  .hero h1 .credit {
+    display: block;
+    margin-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+  .hero h1 .credit .shinhan { color: var(--sunset-dp); font-weight: 500; }
 
   .hero-sub {
     font-size: 15px;
