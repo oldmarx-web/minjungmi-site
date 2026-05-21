@@ -936,7 +936,7 @@
   }
 
   /* ============ LETTER ============ */
-  .letter { background: var(--paper); }
+  .letter { background: linear-gradient(180deg, #D5DEB8 0%, #B8C496 100%); }
   .letter-container { max-width: 1440px; margin: 0 auto; }
 
   .letter-featured {
@@ -947,7 +947,7 @@
     box-shadow: 0 1px 0 rgba(181, 138, 71, 0.05), 0 40px 90px -40px rgba(61, 55, 50, 0.22);
   }
   .letter-featured::before {
-    content: 'VOL. 012 · 2026 · 04 · 17';
+    content: 'VOL. 013 · 2026 · 05 · 22';
     position: absolute;
     top: 36px; right: 44px;
     font-family: 'JetBrains Mono', monospace;
