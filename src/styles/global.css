@@ -1736,6 +1736,103 @@
     .m-voice-photo { max-width: 180px; margin: 0 auto; }
   }
 
+    /* ============ RECRUIT BANNER (사랑지사 리쿠르팅) ============ */
+  .recruit-banner {
+    max-width: 1100px;
+    margin: 56px auto 0;
+    padding: 40px 44px 38px;
+    background: linear-gradient(180deg, var(--ivory-2) 0%, var(--ivory) 100%);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    position: relative;
+  }
+  .recruit-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px dashed var(--line);
+    margin: 6px;
+    border-radius: 2px;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .recruit-banner-inner {
+    position: relative;
+    text-align: center;
+  }
+  .recruit-banner-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sunset);
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .recruit-eyebrow-sep {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--sunset); opacity: 0.55;
+  }
+  .recruit-eyebrow-sub {
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+  }
+  .recruit-banner-title {
+    font-size: 30px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .recruit-banner-title .em { color: var(--sunset); font-style: italic; }
+  .recruit-banner-deck {
+    max-width: 620px;
+    margin: 0 auto 18px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+  .recruit-banner-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 22px;
+  }
+  .recruit-banner-cta {
+    display: inline-block;
+    padding: 12px 26px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .recruit-banner-cta:hover {
+    background: var(--sunset-dp);
+    transform: translateY(-1px);
+  }
+  .recruit-banner-sub {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  @media (max-width: 760px) {
+    .recruit-banner { padding: 32px 22px 30px; }
+    .recruit-banner-title { font-size: 24px; }
+    .recruit-banner-deck { font-size: 14px; }
+  }
+
     /* ============ MONTHLY ARCHIVE (지난 호 목록) ============ */
   .monthly-archive {
     max-width: 1100px;
