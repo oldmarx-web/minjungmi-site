@@ -288,7 +288,7 @@
     margin-top: 22px;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 18px;
     letter-spacing: 0.12em;
     color: var(--ink-mute);
   }
@@ -956,8 +956,7 @@
     position: relative;
     box-shadow: 0 1px 0 rgba(181, 138, 71, 0.05), 0 40px 90px -40px rgba(61, 55, 50, 0.22);
   }
-  .letter-featured::before {
-    content: 'VOL. 013 · 2026 · 05 · 22';
+  .letter-vol-badge {
     position: absolute;
     top: 36px; right: 44px;
     font-family: 'JetBrains Mono', monospace;
@@ -1009,7 +1008,8 @@
     max-width: 720px;
   }
   .letter-body p { margin-bottom: 22px; }
-  .letter-body .dropcap {
+  /* 첫 번째 문단의 첫 글자에 드롭캡 자동 적용 (마크다운에서도 작동) */
+  .letter-body p:first-of-type::first-letter {
     float: left;
     font-family: 'Noto Serif KR', serif;
     font-weight: 500;
