@@ -21,6 +21,15 @@ const pastWeeklies  = weekly.slice(1, 7);
 const currentIssue  = monthly[0];
 const pastIssues    = monthly.slice(1);
 
+// Render the latest weekly letter's markdown body
+const LatestLetterContent = latestWeekly ? (await latestWeekly.render()).Content : null;
+
+// Date formatters
+const pad2 = (n: number) => String(n).padStart(2, '0');
+const pad3 = (n: number) => String(n).padStart(3, '0');
+const fmtDate = (d: Date) => `${d.getFullYear()} · ${pad2(d.getMonth() + 1)} · ${pad2(d.getDate())}`;
+const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
+
 ---
 
 <Base>
@@ -48,7 +57,7 @@ const pastIssues    = monthly.slice(1);
   <div class="hero-meta-bar">
     <div class="cell">
       <span class="label">ISSUE</span>
-      <span class="value">VOL. 013</span>
+      <span class="value">VOL. 014</span>
     </div>
     <div class="cell">
       <span class="label">PUBLISHED</span>
@@ -103,7 +112,7 @@ const pastIssues    = monthly.slice(1);
   <div class="hero-index reveal">
     <div class="hero-index-head">
       <span class="hero-index-label">◦ INDEX · 이번 호 목차 · IN THIS ISSUE</span>
-      <span class="hero-index-vol">VOL. 013 — SPRING 2026</span>
+      <span class="hero-index-vol">VOL. 014 — SPRING 2026</span>
     </div>
     <ol class="hero-index-list">
       <li>
@@ -354,106 +363,46 @@ const pastIssues    = monthly.slice(1);
       </p>
     </div>
 
-    <article class="letter-featured reveal">
-      <div class="letter-stamp">Latest · This Week</div>
-      <div class="letter-meta">
-        <span class="line"></span>
-        <span>VOL. 013 · 2026 · 05 · 22 · FRIDAY</span>
-      </div>
-      <h3>"푸름이 온다 — 매해, 다른 손길로."</h3>
-      <div class="letter-body">
-        <p>
-          <span class="dropcap">지</span>난 일요일, 한강 둔치를 걸었어요. 연두에서 짙은
-          초록으로 색이 옮겨가는 며칠. 같은 자리, 같은 나무인데도 매년 푸름의 농도가 미묘하게
-          다르다고 느낀 적 있으세요?
-        </p>
-        <p>
-          빛이 변하는 게 아니에요. 우리 눈이 그 사이를 살아낸 시간만큼 달라져 있어서 그래요.
-          한 해 동안 우리는 조금씩 늙고, 조금씩 다른 것을 사랑하게 됩니다. 그 변화 위로
-          매해 새로운 푸름이 내려앉기 때문에, 같은 5월이 한 번도 같았던 적이 없어요.
-        </p>
-        <blockquote>
-          "오래 보고 싶은 풍경은 — 보는 사람이
-          그 자리에 머물 수 있어야 가능합니다."
-        </blockquote>
-        <p>
-          이번 주 상담에서 한 분이 이런 말씀을 하셨어요. "큰 거 안 바라요. 그냥 내년에도,
-          그 다음 해에도 이 동네 산책하고 싶어요." 저는 잠시 답하지 않고 그분의 얼굴을
-          봤습니다. 그 평범한 말 안에 가장 어려운 소원이 들어 있었거든요. 다음 푸름까지 —
-          지금 그대로, 같은 자리에 머무는 것.
-        </p>
-        <p>
-          머무는 데에는 의외로 많은 것이 필요합니다. 시간이 필요하고, 건강이 필요하고,
-          변하는 세계와 같이 변하는 작은 장치들도 필요해요. 작년에는 없던 진단법이 올해
-          표준이 되고, 5년 전엔 보장 밖이었던 시술이 지금은 보장 안에 들어옵니다. 풍경이
-          매해 다른 색으로 오는 것처럼, 자리도 매해 조금씩 새 옷을 입어야 같은 자리일 수
-          있어요.
-        </p>
-        <p>
-          오래 보고 싶은 것이 있다는 건 사실 굉장히 적극적인 소원이에요. 그 소원을 지키는
-          일은 평범한 살림처럼 매년 조금씩 점검되어야 합니다. 우리가 매년 옷장을 정리하고,
-          매년 화분을 옮기고, 매년 한 번 건강검진을 받는 것처럼 — 같은 자리에 오래
-          머무르기 위해서요.
-        </p>
-        <p>
-          이번 주, 한 번 창밖의 푸름을 오래 보세요. 그 푸름이 내년에도, 그다음 해에도 같은
-          자리에서 보이려면 — 결국 보는 사람의 자리가 받쳐줘야 한다는 걸. 그 자리가
-          흔들리지 않게 받쳐주는 작은 장치들이 있다는 걸. 우리는 그 장치들을 평소엔 잘
-          의식하지 않고 살아요. 그게 잘 되어 있다는 뜻이거든요.
-        </p>
-        <p>다음 주 편지에서 또 만나요. 푸름의 한가운데에서.</p>
-      </div>
-      <div class="letter-sign">
-        <div class="left">
-          <div class="from">FROM —</div>
-          <div class="name">민정미 · Min Jung Mi</div>
+    {latestWeekly && (
+      <article class="letter-featured reveal">
+        <div class="letter-stamp">Latest · This Week</div>
+        <div class="letter-vol-badge">{`VOL. ${pad3(latestWeekly.data.vol)} · ${fmtDate(latestWeekly.data.date)}`}</div>
+        <div class="letter-meta">
+          <span class="line"></span>
+          <span>{`VOL. ${pad3(latestWeekly.data.vol)} · ${fmtVolDate(latestWeekly.data.date)}`}</span>
         </div>
-        <div class="reading-time">5 MIN READ · 1,080 WORDS</div>
-      </div>
-    </article>
+        <h3>{latestWeekly.data.title}</h3>
+        <div class="letter-body">
+          <LatestLetterContent />
+        </div>
+        <div class="letter-sign">
+          <div class="left">
+            <div class="from">FROM —</div>
+            <div class="name">민정미 · Min Jung Mi</div>
+          </div>
+          <div class="reading-time">{latestWeekly.data.reading_time}</div>
+        </div>
+      </article>
+    )}
 
     <div class="archive reveal">
       <div class="archive-head">
         <h4>PAST LETTERS · 지난 편지들</h4>
-        <div class="meta">012 → 007 · SHOWING 6 OF 12</div>
+        {pastWeeklies.length > 0 ? (
+          <div class="meta">{`${pad3(pastWeeklies[0].data.vol)} → ${pad3(pastWeeklies[pastWeeklies.length - 1].data.vol)} · SHOWING ${pastWeeklies.length} OF ${weekly.length}`}</div>
+        ) : (
+          <div class="meta">아직 지난 편지가 없습니다 · 첫 호입니다</div>
+        )}
       </div>
       <div class="archive-list">
-        <div class="archive-item">
-          <span class="num">N°012</span>
-          <span class="title">"보험은요, 사실 당신이 사라진 뒤를 위한 편지입니다"</span>
-          <span class="date">2026 · 04 · 17</span>
-          <span class="arr">→</span>
-        </div>
-        <div class="archive-item">
-          <span class="num">N°011</span>
-          <span class="title">"가장 비싼 보험은, 당신이 들지 않은 보험입니다"</span>
-          <span class="date">2026 · 04 · 10</span>
-          <span class="arr">→</span>
-        </div>
-        <div class="archive-item">
-          <span class="num">N°010</span>
-          <span class="title">"암 진단을 받은 날, 그녀가 가장 먼저 한 말"</span>
-          <span class="date">2026 · 04 · 03</span>
-          <span class="arr">→</span>
-        </div>
-        <div class="archive-item">
-          <span class="num">N°009</span>
-          <span class="title">"설계사가 되기 전, 나는 어떤 사람이었나"</span>
-          <span class="date">2026 · 03 · 27</span>
-          <span class="arr">→</span>
-        </div>
-        <div class="archive-item">
-          <span class="num">N°008</span>
-          <span class="title">"종신보험을 권하지 않는 날도 있습니다"</span>
-          <span class="date">2026 · 03 · 20</span>
-          <span class="arr">→</span>
-        </div>
-        <div class="archive-item">
-          <span class="num">N°007</span>
-          <span class="title">"25년 차 고객이 처음으로 해지를 말했을 때"</span>
-          <span class="date">2026 · 03 · 13</span>
-          <span class="arr">→</span>
-        </div>
+        {pastWeeklies.map((entry) => (
+          <div class="archive-item">
+            <span class="num">{`N°${pad3(entry.data.vol)}`}</span>
+            <span class="title">{entry.data.title}</span>
+            <span class="date">{fmtDate(entry.data.date)}</span>
+            <span class="arr">→</span>
+          </div>
+        ))}
       </div>
     </div>
   </div>
