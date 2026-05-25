@@ -1,14 +1,14 @@
 :root {
-    --paper:     #FBF3E2;
-    --paper-dim: #F4EAD1;
-    --ivory:     #F7EDD6;
-    --ivory-2:   #FDF7E8;
-    --ivory-3:   #EADBB7;
+    --paper:     #EEF4EA;
+    --paper-dim: #DDE8D6;
+    --ivory:     #EBF1E4;
+    --ivory-2:   #F3F7EE;
+    --ivory-3:   #D6E0C8;
     --ink:       #3D3732;   /* softened warm gray, never pure black */
     --ink-soft:  #6B635A;
     --ink-mute:  #958C7F;
-    --line:      #DCCEAE;
-    --line-soft: #EADEC0;
+    --line:      #CDDAC0;
+    --line-soft: #DEE7D2;
     --sunset:    #C26E3E;
     --sunset-dp: #924820;
     --honey:     #E6B85C;
@@ -55,10 +55,10 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 40px;
-    background: rgba(251, 243, 226, 0.82);
+    background: rgba(238, 244, 234, 0.82);
     backdrop-filter: blur(18px) saturate(1.2);
     -webkit-backdrop-filter: blur(18px) saturate(1.2);
-    border-bottom: 1px solid rgba(220, 206, 174, 0.4);
+    border-bottom: 1px solid rgba(205, 218, 192, 0.4);
     transition: padding 0.35s ease;
   }
   nav .brand {
