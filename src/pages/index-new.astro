@@ -733,6 +733,11 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
     </p>
   </div>
 
+  <!--
+    [운영 규칙] Chungmuro Diaries · 쇼츠 카드는 항상 최신 4개만 노출.
+    새 VOL이 추가될 때 → 가장 오래된 VOL 카드를 삭제하고 새 카드를 맨 뒤에 추가.
+    (현재: VOL.01 출간 / VOL.02 브랜딩 / VOL.03 그래서 / VOL.04 30만원·2천만원)
+  -->
   <div class="vlog-grid">
     <a class="vlog-card reveal" href="https://www.youtube.com/shorts/9xKrQdVA5Os" target="_blank" rel="noopener">
       <div class="thumb" style="background: #1a120a url('https://i.ytimg.com/vi/9xKrQdVA5Os/hqdefault.jpg') center/cover no-repeat;">
@@ -757,6 +762,14 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
       </div>
       <div class="cat">Chungmuro Diaries · 쇼츠</div>
       <h5>그래서 지금도 이 일을 합니다</h5>
+    </a>
+    <a class="vlog-card reveal" href="https://www.youtube.com/shorts/L7bPVmSb4j8" target="_blank" rel="noopener">
+      <div class="thumb" style="background: #1a120a url('https://i.ytimg.com/vi/L7bPVmSb4j8/hqdefault.jpg') center/cover no-repeat;">
+        <div class="top"><span>VOL. 04</span><span>SHORTS</span></div>
+        <span class="dur">0:30</span>
+      </div>
+      <div class="cat">Chungmuro Diaries · 쇼츠</div>
+      <h5>누군 30만원, 누군 2천만원 받았습니다!</h5>
     </a>
   </div>
 </section>
