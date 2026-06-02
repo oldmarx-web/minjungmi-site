@@ -184,7 +184,7 @@
     width: 100%;
     aspect-ratio: 3/2;
     /* mobile-first: 124KB, ~900px */
-    background-image: url('/images/insure-mobile.jpg');
+    background-image: url('/images/insure-mobile.jpg?v=2');
     background-size: cover;
     background-position: center;
     background-color: #D4C198;
@@ -193,12 +193,12 @@
   }
   /* tablet & up: 344KB, ~1600px */
   @media (min-width: 700px) {
-    .hero-photo { background-image: url('/images/insure-medium.jpg'); }
+    .hero-photo { background-image: url('/images/insure-medium.jpg?v=2'); }
   }
   /* large desktop / retina: original 2.8MB */
   @media (min-width: 1400px) and (min-resolution: 1.5dppx),
          (min-width: 1800px) {
-    .hero-photo { background-image: url('/images/insure.jpg'); }
+    .hero-photo { background-image: url('/images/insure.jpg?v=2'); }
   }
   .hero-photo-caption {
     display: grid;
