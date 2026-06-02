@@ -21,6 +21,24 @@ const {
   <title>{title}</title>
   <meta name="description" content={description} />
 
+  <!-- Open Graph / 링크 미리보기 — 항상 민정미 지사장 사진 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="민정미의 보험테라피" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://minjungmi.kr/" />
+  <meta property="og:image" content="https://minjungmi.kr/images/og-min.jpg" />
+  <meta property="og:image:secure_url" content="https://minjungmi.kr/images/og-min.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="신한금융플러스 사랑지사 지사장 민정미" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://minjungmi.kr/images/og-min.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com/" />
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
   <link
