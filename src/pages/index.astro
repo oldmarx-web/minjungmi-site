@@ -75,7 +75,7 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
 
   <div class="hero-grid">
     <div class="hero-photo-wrap reveal visible">
-      <video id="hero-video" class="hero-photo" autoplay loop muted playsinline preload="auto" poster="/images/hero.jpg" style="background:#1a1a1a; object-fit:cover; display:block;">
+      <video id="hero-video" class="hero-photo" autoplay loop muted playsinline preload="auto" poster="/images/hero.jpg" style="background:#1a1a1a; object-fit:contain; aspect-ratio:16/9; display:block;">
         <source src="/images/hero.mp4" type="video/mp4">
       </video>
       <button id="hero-unmute" type="button" aria-label="소리 켜기" style="position:absolute; bottom:18px; right:18px; background:rgba(0,0,0,0.55); color:#fff; border:none; padding:9px 16px; border-radius:999px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; cursor:pointer; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:5; transition:background 0.2s;">🔇 SOUND · 클릭</button>
@@ -96,8 +96,8 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
         <span class="sm">2006</span>
       </div>
       <div class="hero-photo-caption">
-        <span class="lft">보험은 함께 걷는 일</span>
-        <span>NIKON F2 · 45mm F=3.8 · PHOTO BY Hyun Jin Hyun</span>
+        <span class="lft">사람을 찾습니다</span>
+        <span>영상 제작: 작은정원</span>
       </div>
     </div>
 
