@@ -75,29 +75,14 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
 
   <div class="hero-grid">
     <div class="hero-photo-wrap reveal visible">
-      <video id="hero-video" class="hero-photo" autoplay loop muted playsinline preload="auto" poster="/images/hero.jpg" style="background:#1a1a1a; object-fit:contain; aspect-ratio:16/9; display:block;">
-        <source src="/images/hero.mp4" type="video/mp4">
-      </video>
-      <button id="hero-unmute" type="button" aria-label="소리 켜기" style="position:absolute; bottom:18px; right:18px; background:rgba(0,0,0,0.55); color:#fff; border:none; padding:9px 16px; border-radius:999px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; cursor:pointer; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:5; transition:background 0.2s;">🔇 SOUND · 클릭</button>
-      <script is:inline>
-        (function(){
-          const v = document.getElementById('hero-video');
-          const b = document.getElementById('hero-unmute');
-          if (!v || !b) return;
-          b.addEventListener('click', () => {
-            v.muted = !v.muted;
-            if (!v.muted && v.paused) v.play().catch(()=>{});
-            b.textContent = v.muted ? '🔇 SOUND · 클릭' : '🔊 SOUND ON';
-          });
-        })();
-      </script>
+      <div class="hero-photo"></div>
       <div class="hero-sticker">
         <span class="big">Since</span>
         <span class="sm">2006</span>
       </div>
       <div class="hero-photo-caption">
-        <span class="lft">사람을 찾습니다</span>
-        <span>영상 제작: 작은정원</span>
+        <span class="lft">6월</span>
+        <span>사진 Hyun Jin Hyun</span>
       </div>
     </div>
 
