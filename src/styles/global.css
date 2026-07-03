@@ -1,14 +1,14 @@
 :root {
-    --paper:     #EEF4EA;
-    --paper-dim: #DDE8D6;
-    --ivory:     #EBF1E4;
-    --ivory-2:   #F3F7EE;
-    --ivory-3:   #D6E0C8;
-    --ink:       #3D3732;   /* softened warm gray, never pure black */
-    --ink-soft:  #6B635A;
-    --ink-mute:  #958C7F;
-    --line:      #CDDAC0;
-    --line-soft: #DEE7D2;
+    --paper:     #E4F1F3;   /* 시원한 바다 — 메인 배경 */
+    --paper-dim: #CFE6EA;
+    --ivory:     #DFEEF1;
+    --ivory-2:   #F1F8F9;
+    --ivory-3:   #C3DCE3;
+    --ink:       #2E3A3D;   /* cool deep slate — 바다 톤 잉크 */
+    --ink-soft:  #55686D;
+    --ink-mute:  #86A0A6;
+    --line:      #B7D5DC;
+    --line-soft: #D4E6EA;
     --sunset:    #C26E3E;
     --sunset-dp: #924820;
     --honey:     #E6B85C;
@@ -204,7 +204,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 3/2;
-    background: radial-gradient(120% 120% at 50% 18%, #2a3520 0%, #1a2113 58%, #10140b 100%);
+    background: radial-gradient(120% 120% at 50% 18%, #1c4a57 0%, #123540 58%, #0b2129 100%);
     box-shadow: 0 50px 100px -40px rgba(61, 55, 50, 0.35);
     overflow: hidden;
     display: flex;
