@@ -10,6 +10,81 @@ const {
   title = '민정미의 보험테라피 — Insurance Therapy',
   description = '충무로에서, 보험 테라피스트들 민정미와 동료들이 전하는 주간 편지와 이야기.',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://minjungmi.kr');
+
+// 구조화 데이터 (JSON-LD) — AI 검색·검색엔진이 '민정미'가 누구인지 기계적으로 읽는 부분
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://minjungmi.kr/#minjungmi',
+      name: '민정미',
+      alternateName: ['Min Jung Mi', '민쌤'],
+      jobTitle: '지사장',
+      description:
+        '서울 충무로 신한금융플러스 사랑지사 지사장. 2006년부터 20년 경력의 보험 전문가이자 MDRT COT 회원. 『보험 테라피스트 민정미 씨 이야기』 저자. 여덟 명의 보험 테라피스트 팀과 함께 주간 편지 「민쌤 레터」를 발행한다.',
+      image: 'https://minjungmi.kr/images/og-min.jpg',
+      url: 'https://minjungmi.kr/',
+      telephone: '+82-10-5023-9420',
+      email: 'mjm44600@naver.com',
+      worksFor: { '@id': 'https://minjungmi.kr/#agency' },
+      memberOf: {
+        '@type': 'Organization',
+        name: 'MDRT (Million Dollar Round Table)',
+        url: 'https://mdrtkorea.org/',
+      },
+      knowsAbout: ['보험 설계', '보험 리모델링', '생명보험', '재정 설계', '보험 상담'],
+      sameAs: [
+        'https://www.youtube.com/@보험테라피-min',
+        'https://www.instagram.com/minssem_insuretherapy/',
+        'https://mdrtkorea.org/membership/searchMemberView?mem_id=25214',
+        'https://www.businesskorea.co.kr/news/articleView.html?idxno=262665',
+        'https://brunch.co.kr/@oldmarx/1292',
+        'https://brunch.co.kr/@oldmarx/1297',
+        'https://product.kyobobook.co.kr/detail/S000219084109',
+      ],
+    },
+    {
+      '@type': 'InsuranceAgency',
+      '@id': 'https://minjungmi.kr/#agency',
+      name: '신한금융플러스 사랑지사',
+      description:
+        '서울 중구 충무로, 충무로역 2번 출구 인근의 보험 상담 지사. 2006년부터 20년간 충무로에서 활동. 지사장 민정미와 여덟 명의 보험 테라피스트가 일한다.',
+      url: 'https://minjungmi.kr/',
+      telephone: '+82-10-5023-9420',
+      email: 'mjm44600@naver.com',
+      foundingDate: '2006',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '충무로',
+        addressLocality: '중구',
+        addressRegion: '서울',
+        addressCountry: 'KR',
+      },
+      parentOrganization: { '@type': 'Organization', name: '신한금융플러스' },
+      founder: { '@id': 'https://minjungmi.kr/#minjungmi' },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://minjungmi.kr/#website',
+      name: '민정미의 보험테라피',
+      alternateName: 'Insurance Therapy',
+      url: 'https://minjungmi.kr/',
+      inLanguage: 'ko',
+      publisher: { '@id': 'https://minjungmi.kr/#minjungmi' },
+    },
+    {
+      '@type': 'Book',
+      name: '보험 테라피스트 민정미 씨 이야기',
+      author: { '@id': 'https://minjungmi.kr/#minjungmi' },
+      url: 'https://product.kyobobook.co.kr/detail/S000219084109',
+      datePublished: '2026',
+      inLanguage: 'ko',
+    },
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -20,6 +95,11 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <!-- 구조화 데이터 — Person(민정미) + InsuranceAgency + WebSite + Book -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <!-- Open Graph / 링크 미리보기 — 항상 민정미 지사장 사진 -->
   <meta property="og:type" content="website" />

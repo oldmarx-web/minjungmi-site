@@ -1,0 +1,54 @@
+# minjungmi.kr — 모든 검색엔진 및 AI 크롤러 환영
+# https://minjungmi.kr/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /index-new
+
+# ── AI 검색/답변 엔진 크롤러 (명시적 허용) ──
+
+# OpenAI (ChatGPT 검색·학습)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google (Gemini/AI Overviews 학습 허용)
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Bing (ChatGPT·Copilot의 색인 기반)
+User-agent: Bingbot
+Allow: /
+
+# Naver (네이버 검색·AI 브리핑)
+User-agent: Yeti
+Allow: /
+
+# Common Crawl (다수 LLM 학습 데이터 소스)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://minjungmi.kr/sitemap-index.xml
