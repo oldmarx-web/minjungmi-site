@@ -213,22 +213,22 @@
   .hero-photo {
     width: 100%;
     aspect-ratio: 3/2;
-    /* mobile-first: 124KB, ~900px */
-    background-image: url('/images/hero-mobile.jpg');
+    /* mobile-first: ~900px */
+    background-image: url('/images/hero-aug-mobile.jpg');
     background-size: cover;
     background-position: center;
     background-color: #D4C198;
     filter: saturate(1.03);
     box-shadow: 0 50px 100px -40px rgba(61, 55, 50, 0.35);
   }
-  /* tablet & up: 344KB, ~1600px */
+  /* tablet & up: ~1600px */
   @media (min-width: 700px) {
-    .hero-photo { background-image: url('/images/hero-medium.jpg'); }
+    .hero-photo { background-image: url('/images/hero-aug-medium.jpg'); }
   }
-  /* large desktop / retina: original 2.8MB */
+  /* large desktop / retina: ~2600px */
   @media (min-width: 1400px) and (min-resolution: 1.5dppx),
          (min-width: 1800px) {
-    .hero-photo { background-image: url('/images/hero.jpg'); }
+    .hero-photo { background-image: url('/images/hero-aug.jpg'); }
   }
   .hero-video {
     position: relative;
