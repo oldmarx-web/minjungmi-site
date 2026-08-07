@@ -215,7 +215,7 @@
     width: 100%;
     aspect-ratio: 3/2;
     /* mobile-first: ~900px */
-    background-image: url('/images/hero-aug-mobile.jpg');
+    background-image: url('/images/hero-aug2-mobile.jpg');
     background-size: cover;
     background-position: center;
     background-color: #D4C198;
@@ -224,12 +224,12 @@
   }
   /* tablet & up: ~1600px */
   @media (min-width: 700px) {
-    .hero-photo { background-image: url('/images/hero-aug-medium.jpg'); }
+    .hero-photo { background-image: url('/images/hero-aug2-medium.jpg'); }
   }
   /* large desktop / retina: ~2600px */
   @media (min-width: 1400px) and (min-resolution: 1.5dppx),
          (min-width: 1800px) {
-    .hero-photo { background-image: url('/images/hero-aug.jpg'); }
+    .hero-photo { background-image: url('/images/hero-aug2.jpg'); }
   }
   .hero-video {
     position: relative;
@@ -249,25 +249,6 @@
     max-width: 100%;
     border: 0;
     display: block;
-  }
-
-  .hero-photo-line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    padding: 34px 20px 13px;
-    text-align: center;
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 400;
-    font-size: 12.5px;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.94);
-    background: linear-gradient(to bottom, rgba(20, 18, 16, 0) 0%, rgba(20, 18, 16, 0.42) 100%);
-  }
-  @media (max-width: 900px) {
-    .hero-photo-line { font-size: 11px; padding: 26px 14px 10px; }
   }
 
   .hero-photo-caption {
