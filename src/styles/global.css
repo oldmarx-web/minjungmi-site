@@ -121,6 +121,8 @@
   }
   .consult-btn:hover { background: var(--sunset-dp); border-color: var(--sunset-dp); }
 
+  .therapists-sec .section-head h2 { word-break: keep-all; }
+
   /* YouTube 채널 배지 (nav) */
   nav .brand { white-space: nowrap; }
   nav .nav-meta { white-space: nowrap; }
