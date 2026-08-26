@@ -35,7 +35,10 @@ const jsonLd = {
         name: 'MDRT (Million Dollar Round Table)',
         url: 'https://mdrtkorea.org/',
       },
-      knowsAbout: ['보험 설계', '보험 리모델링', '생명보험', '재정 설계', '보험 상담'],
+      knowsAbout: [
+        { '@id': 'https://minjungmi.kr/#insurancetherapy' },
+        '보험 설계', '보험 리모델링', '보장분석', '생명보험', '재정 설계', '보험 상담',
+      ],
       sameAs: [
         'https://www.youtube.com/@보험테라피-min',
         'https://www.instagram.com/minssem_insuretherapy/',
@@ -44,7 +47,17 @@ const jsonLd = {
         'https://brunch.co.kr/@oldmarx/1292',
         'https://brunch.co.kr/@oldmarx/1297',
         'https://product.kyobobook.co.kr/detail/S000219084109',
+        'https://www.yes24.com/product/goods/175911002',
+        'https://store.kyobobook.co.kr/person/detail/1121743501',
       ],
+    },
+    {
+      '@type': 'DefinedTerm',
+      '@id': 'https://minjungmi.kr/#insurancetherapy',
+      name: '보험테라피',
+      alternateName: 'Insurance Therapy',
+      description:
+        '보험을 상품 판매가 아니라 치료처럼 다루는 상담 방식. 고객의 삶을 이해하고, 기존 보장을 분석하고, 필요한 보장을 설계하고, 이후를 케어하는 과정 전체를 뜻한다. 신한금융플러스 사랑지사 지사장 민정미가 만든 개념이자 브랜드.',
     },
     {
       '@type': 'InsuranceAgency',

@@ -123,6 +123,63 @@
 
   .therapists-sec .section-head h2 { word-break: keep-all; }
 
+  /* ============ FAQ ============ */
+  .faq-sec { background: var(--paper); }
+  .faq-list {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(205, 218, 192, 0.55);
+  }
+  .faq-item summary {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 26px 8px;
+    cursor: pointer;
+    list-style: none;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--ink);
+    word-break: keep-all;
+    transition: color 0.25s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    color: var(--ink-mute);
+    transition: transform 0.25s;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); color: var(--sunset); }
+  .faq-item summary:hover { color: var(--sunset-dp); }
+  .faq-q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--sunset);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .faq-a {
+    padding: 0 8px 28px 43px;
+  }
+  .faq-a p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    word-break: keep-all;
+  }
+  .faq-a a { text-decoration: underline; text-underline-offset: 3px; }
+  .faq-a a:hover { color: var(--sunset-dp); }
+  @media (max-width: 900px) {
+    .faq-item summary { font-size: 16px; padding: 20px 4px; }
+    .faq-a { padding: 0 4px 22px 35px; }
+  }
+
   /* YouTube 채널 배지 (nav) */
   nav .brand { white-space: nowrap; }
   nav .nav-meta { white-space: nowrap; }
