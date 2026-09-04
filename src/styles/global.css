@@ -1,14 +1,14 @@
 :root {
-    --paper:     #E4F1F3;   /* 시원한 바다 — 메인 배경 */
-    --paper-dim: #CFE6EA;
-    --ivory:     #DFEEF1;
-    --ivory-2:   #F1F8F9;
-    --ivory-3:   #C3DCE3;
-    --ink:       #2E3A3D;   /* cool deep slate — 바다 톤 잉크 */
-    --ink-soft:  #55686D;
-    --ink-mute:  #86A0A6;
-    --line:      #B7D5DC;
-    --line-soft: #D4E6EA;
+    --paper:     #F3EDE3;   /* 밝은 웜 크림 — 말린 꽃 벽의 톤 */
+    --paper-dim: #E9DFCF;
+    --ivory:     #EFE7D9;
+    --ivory-2:   #F9F5EC;
+    --ivory-3:   #DECDB6;
+    --ink:       #3B3025;   /* 딥 웜 브라운 — 마른 줄기의 톤 */
+    --ink-soft:  #6F5F4C;
+    --ink-mute:  #A8967E;
+    --line:      #D3C2A8;
+    --line-soft: #E4D8C5;
     --sunset:    #C26E3E;
     --sunset-dp: #924820;
     --honey:     #E6B85C;
@@ -55,10 +55,10 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 40px;
-    background: rgba(238, 244, 234, 0.82);
+    background: rgba(243, 237, 227, 0.82);
     backdrop-filter: blur(18px) saturate(1.2);
     -webkit-backdrop-filter: blur(18px) saturate(1.2);
-    border-bottom: 1px solid rgba(205, 218, 192, 0.4);
+    border-bottom: 1px solid rgba(211, 194, 168, 0.4);
     transition: padding 0.35s ease;
   }
   nav .brand {
@@ -130,7 +130,7 @@
     margin: 0 auto;
   }
   .faq-item {
-    border-bottom: 1px solid rgba(205, 218, 192, 0.55);
+    border-bottom: 1px solid rgba(211, 194, 168, 0.55);
   }
   .faq-item summary {
     display: flex;
