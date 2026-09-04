@@ -1056,7 +1056,7 @@
   }
 
   /* ============ LETTER ============ */
-  .letter { background: linear-gradient(180deg, #D5DEB8 0%, #B8C496 100%); }
+  .letter { background: linear-gradient(180deg, #E6D8BE 0%, #CDB794 100%); }
   .letter-container { max-width: 1440px; margin: 0 auto; }
 
   .letter-featured {

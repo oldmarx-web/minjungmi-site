@@ -652,28 +652,6 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
 
   </div>
 
-  <!-- Monthly archive · 지난 호 목록 (적층) -->
-  <div class="monthly-archive reveal">
-    <div class="monthly-archive-head">
-      <h4>PAST ISSUES · 지난 호</h4>
-      <div class="monthly-archive-meta">— · SHOWING 0 OF 0 · 최신호가 위에 있습니다</div>
-    </div>
-
-    <ul class="monthly-archive-list">
-      <!--
-        다음 호(ISSUE Nº 03)부터 ISSUE Nº 01, Nº 02가 이 자리로 이동.
-        Astro로 마이그레이션하면 content/monthly/*.md 컬렉션을 자동 정렬해서 렌더링.
-        지금은 비어있는 상태가 정상입니다.
-      -->
-      <li class="monthly-archive-empty">
-        <span class="m-arch-icon">◦</span>
-        <span class="m-arch-text">
-          첫 호입니다. 다음 호(<strong>JULY 2026 · ISSUE Nº 03</strong>)부터 이 자리에 지난 호들이 한 줄 리스트로 쌓입니다.
-        </span>
-      </li>
-    </ul>
-  </div>
-
   <div class="monthly-foot">
     <div class="monthly-foot-line">
       <span>NEXT ISSUE</span>
