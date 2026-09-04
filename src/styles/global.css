@@ -274,7 +274,7 @@
     width: 100%;
     aspect-ratio: 3/2;
     /* mobile-first: ~900px */
-    background-image: url('/images/hero-aug2-mobile.jpg');
+    background-image: url('/images/hero-sep-mobile.jpg');
     background-size: cover;
     background-position: center;
     background-color: #D4C198;
@@ -283,12 +283,12 @@
   }
   /* tablet & up: ~1600px */
   @media (min-width: 700px) {
-    .hero-photo { background-image: url('/images/hero-aug2-medium.jpg'); }
+    .hero-photo { background-image: url('/images/hero-sep-medium.jpg'); }
   }
   /* large desktop / retina: ~2600px */
   @media (min-width: 1400px) and (min-resolution: 1.5dppx),
          (min-width: 1800px) {
-    .hero-photo { background-image: url('/images/hero-aug2.jpg'); }
+    .hero-photo { background-image: url('/images/hero-sep.jpg'); }
   }
   .hero-video {
     position: relative;
