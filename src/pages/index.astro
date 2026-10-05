@@ -117,14 +117,14 @@ const voiceMembers: Record<string, { name: string; no: string; role?: string; ye
 
   <div class="hero-grid">
     <div class="hero-photo-wrap reveal visible">
-      <div class="hero-photo" role="img" aria-label="흰 벽 앞, 나무 건조대에 가지런히 매달려 마르는 가을 꽃들"></div>
+      <div class="hero-photo" role="img" aria-label={siteGeneral.hero_image_alt || siteGeneral.hero_image_caption} style={siteGeneral.hero_image ? `background-image: url('${siteGeneral.hero_image}')` : undefined}></div>
       <div class="hero-sticker">
         <span class="big">Since</span>
         <span class="sm">2006</span>
       </div>
       <div class="hero-photo-caption">
         <span class="lft">{siteGeneral.hero_image_caption}</span>
-        <span>LEICA M3 · SUMMARON 35mm · PORTRA 400 · PHOTO BY 현진현</span>
+        <span>{siteGeneral.hero_image_credit}</span>
       </div>
     </div>
 
