@@ -33,6 +33,7 @@ const fmtVolDate = (d: Date) => `${fmtDate(d)} · FRIDAY`;
 
 // ── 사이트 전역 설정 (히어로 문구) ──
 import siteGeneral from '../content/site/general.json';
+const heroPrint = (siteGeneral as any).hero_image_style === 'print';
 
 // ── 월간호 표시용 도우미 ──
 const paras = (t: string) => (t || '').split(/\n\s*\n/).map((x) => x.replace(/\s*\n\s*/g, ' ').trim()).filter(Boolean);
@@ -117,7 +118,7 @@ const voiceMembers: Record<string, { name: string; no: string; role?: string; ye
 
   <div class="hero-grid">
     <div class="hero-photo-wrap reveal visible">
-      <div class="hero-photo" role="img" aria-label={siteGeneral.hero_image_alt || siteGeneral.hero_image_caption} style={siteGeneral.hero_image ? `background-image: url('${siteGeneral.hero_image}')` : undefined}></div>
+      <div class={heroPrint ? 'hero-photo hero-photo--print' : 'hero-photo'} role="img" aria-label={siteGeneral.hero_image_alt || siteGeneral.hero_image_caption} style={!heroPrint && siteGeneral.hero_image ? `background-image: url('${siteGeneral.hero_image}')` : undefined}>{heroPrint && <img class="hero-print" src={siteGeneral.hero_image} alt="" decoding="async" />}</div>
       <div class="hero-sticker">
         <span class="big">Since</span>
         <span class="sm">2006</span>
